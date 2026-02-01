@@ -1,0 +1,19 @@
+services:
+
+  user-service:
+    build: ./UserService
+    ports:
+      - "8083:8083"
+
+  train-service:
+    build: ./TrainService
+    ports:
+      - "8081:8081"
+
+  booking-service:
+    build: ./BookingService
+    ports:
+      - "8082:8082"
+    depends_on:
+      - user-service
+      - train-service
